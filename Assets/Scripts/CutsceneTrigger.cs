@@ -70,6 +70,7 @@ public class CutsceneTrigger : MonoBehaviour
         yield return new WaitForSeconds(CutsceneTime);
         CutsceneCamera.SetActive(false);
         MainCamera.SetActive(true);
+        triggered = false;
     }
 
 }
