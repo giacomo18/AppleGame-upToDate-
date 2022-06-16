@@ -34,7 +34,10 @@ public class CutsceneTrigger : MonoBehaviour
         {
             triggered = true;
             gameObject.GetComponent<BoxCollider>().isTrigger = true;
-        } 
+        }
+       
+
+        
        
         
         
@@ -70,7 +73,9 @@ public class CutsceneTrigger : MonoBehaviour
         yield return new WaitForSeconds(CutsceneTime);
         CutsceneCamera.SetActive(false);
         MainCamera.SetActive(true);
-        triggered = false;
+        
+       
     }
+     
 
 }
