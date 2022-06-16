@@ -12,7 +12,7 @@ public class CutsceneTrigger : MonoBehaviour
     public float CutsceneTime = 10;
     public bool triggered;
     public GameObject Basket;
-    public bool Collider;
+    public CollectingApples apples;
     
     
 
@@ -22,30 +22,23 @@ public class CutsceneTrigger : MonoBehaviour
     void Start()
     {
         triggered = false;
-        Collider = false;
-        
+        gameObject.GetComponent<BoxCollider>().isTrigger = false;
+        apples = GameObject.Find("_FPCharacter").GetComponent<CollectingApples>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Collider == true)
-        {
-            gameObject.GetComponent<BoxCollider>().isTrigger = true;
-
-        }
-       
-        else 
-            triggered = false;
-        gameObject.GetComponent<BoxCollider>().isTrigger = false;
-       
-        
-        
-        if (gameObject.tag == ("Player") && gameObject.GetComponent<CollectingApples>().full)
+       if (apples.full == true)
         {
             triggered = true;
             gameObject.GetComponent<BoxCollider>().isTrigger = true;
-        }
+        } 
+       
+        
+        
+        
 
 
 
@@ -57,15 +50,14 @@ public class CutsceneTrigger : MonoBehaviour
 
         if (triggered == true)
         {
-
-
             CutsceneTime -= Time.deltaTime;
-            if (CutsceneTime < 0)
+            if (CutsceneTime > 0)
             {
                 Destroy(Basket);
-                CutsceneCamera.SetActive(false);
-                MainCamera.SetActive(true);
-                CutsceneTime = 0;
+                CutsceneCamera.SetActive(true);
+                MainCamera.SetActive(false);
+                StartCoroutine(Cutscene());
+                //CutsceneTime = 0;
 
             }
 
@@ -73,5 +65,11 @@ public class CutsceneTrigger : MonoBehaviour
         else Debug.Log("Need More Apples");
     }
 
+    private IEnumerator Cutscene()
+    {
+        yield return new WaitForSeconds(CutsceneTime);
+        CutsceneCamera.SetActive(false);
+        MainCamera.SetActive(true);
+    }
 
 }
