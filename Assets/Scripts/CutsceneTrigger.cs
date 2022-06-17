@@ -10,7 +10,7 @@ public class CutsceneTrigger : MonoBehaviour
     //Variables
     public GameObject MainCamera;
     public GameObject CutsceneCamera;
-    public float CutsceneTime = 10;
+    public float CutsceneTime = 10f;
     public bool triggered;
     public GameObject Basket;
     public CollectingApples apples;
@@ -18,6 +18,7 @@ public class CutsceneTrigger : MonoBehaviour
     public GameObject input;
     public bool checkv2;
     public float timer = 30f;
+    public float extraTime = 0f;
     
     
 
@@ -26,11 +27,11 @@ public class CutsceneTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Initialize();
         triggered = false;
         gameObject.GetComponent<BoxCollider>().isTrigger = false;
         apples = GameObject.Find("_FPCharacter").GetComponent<CollectingApples>();
         checkv2 = true;
-
     }
 
     // Update is called once per frame
@@ -47,23 +48,11 @@ public class CutsceneTrigger : MonoBehaviour
             if (checkv2 == true)
             {
                 gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                
                 checkv2 = false;
 
             }
         }
-
-        
-       
-       
-
-        
-       
-        
-        
-        
-
-
-
 
     }
     public void OnTriggerEnter(Collider other)
@@ -72,21 +61,17 @@ public class CutsceneTrigger : MonoBehaviour
 
         if (triggered == true)
         {
-            CutsceneTime -= Time.deltaTime;
+            //CutsceneTime -= Time.deltaTime;
             if (CutsceneTime > 0)
             {
+                extraTime = timer;
                 Destroy(Basket);
                 CutsceneCamera.SetActive(true);
                 MainCamera.SetActive(false);
                 StartCoroutine(Cutscene());
                 input.transform.position = checkpoint.transform.position;
                 gameObject.GetComponent<BoxCollider>().isTrigger = false;
-
-                
-                input.transform.position = checkpoint.transform.position;  
-                
-               
-                //CutsceneTime = 0;
+                input.transform.position = checkpoint.transform.position;
 
             }
 
@@ -96,12 +81,17 @@ public class CutsceneTrigger : MonoBehaviour
 
     private IEnumerator Cutscene()
     {
+        timer = 15f;
         yield return new WaitForSeconds(CutsceneTime);
         CutsceneCamera.SetActive(false);
         MainCamera.SetActive(true);
-        
+        Initialize();
        
     }
      
+    private void Initialize()
+    {
+        timer = 30f + extraTime;
+    }
 
 }

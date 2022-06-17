@@ -23,8 +23,14 @@ public class CollectingApples : MonoBehaviour
             counter += 1;
             Debug.Log(counter);
 
+            if (counter == 4)
+            {
+                full = true;
+                NeedMore = false;
+            }
         }            
     }
+    /*
     public void Update()
     {
        
@@ -33,10 +39,11 @@ public class CollectingApples : MonoBehaviour
             full = true;
             NeedMore = false;
         }
+
         if (counter <= 3)
         {
             NeedMore = true;                         
         }
-    }
+    }*/
     
 }
