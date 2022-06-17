@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 
 public class CutsceneTrigger : MonoBehaviour
@@ -13,6 +14,10 @@ public class CutsceneTrigger : MonoBehaviour
     public bool triggered;
     public GameObject Basket;
     public CollectingApples apples;
+    public GameObject checkpoint;
+    public GameObject input;
+    public bool checkv2;
+    public float timer = 30f;
     
     
 
@@ -24,17 +29,31 @@ public class CutsceneTrigger : MonoBehaviour
         triggered = false;
         gameObject.GetComponent<BoxCollider>().isTrigger = false;
         apples = GameObject.Find("_FPCharacter").GetComponent<CollectingApples>();
+        checkv2 = true;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (apples.full == true)
+        timer -= Time.deltaTime;
+        if (timer < 0)
         {
-            triggered = true;
-            gameObject.GetComponent<BoxCollider>().isTrigger = true;
+            SceneManager.LoadScene("SampleScene");
         }
+       if (apples.full == true)
+       {
+            triggered = true;
+            if (checkv2 == true)
+            {
+                gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                checkv2 = false;
+
+            }
+        }
+
+        
+       
        
 
         
@@ -60,6 +79,13 @@ public class CutsceneTrigger : MonoBehaviour
                 CutsceneCamera.SetActive(true);
                 MainCamera.SetActive(false);
                 StartCoroutine(Cutscene());
+                input.transform.position = checkpoint.transform.position;
+                gameObject.GetComponent<BoxCollider>().isTrigger = false;
+
+                
+                input.transform.position = checkpoint.transform.position;  
+                
+               
                 //CutsceneTime = 0;
 
             }
