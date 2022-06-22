@@ -10,7 +10,7 @@ public class CutsceneTrigger : MonoBehaviour
     //Variables
     public GameObject MainCamera;
     public GameObject CutsceneCamera;
-    public float CutsceneTime = 10f;
+    public float CutsceneTime = 30f;
     public bool triggered;
     public GameObject Basket;
     public CollectingApples apples;
