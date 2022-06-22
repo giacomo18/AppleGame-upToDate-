@@ -60,7 +60,7 @@ Transform:
   m_LocalScale: {x: 0.8, y: 1, z: 0.8}
   m_Children:
   - {fileID: 3020366304796178265}
-  - {fileID: 3020366305579149211}
+  - {fileID: 5397599369844031633}
   - {fileID: 3020366305584861421}
   - {fileID: 961821460387843947}
   - {fileID: 1051288673972051606}
@@ -225,10 +225,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3020366305579149211}
+  - component: {fileID: 5397599369844031633}
   - component: {fileID: 3020366305579149212}
   - component: {fileID: 3020366305579149213}
   - component: {fileID: 3020366305579149210}
+  - component: {fileID: 1683134690495036166}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -236,20 +237,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3020366305579149211
-Transform:
+--- !u!224 &5397599369844031633
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3020366305579149214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3020366304088509114}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 1.8}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!20 &3020366305579149212
 Camera:
   m_ObjectHideFlags: 0
@@ -316,7 +322,28 @@ MonoBehaviour:
   m_sensivity: 100
   m_clampAngle: 90
   m_playerObject: {fileID: 3020366304088509114}
-  m_camera: {fileID: 3020366305579149211}
+  m_camera: {fileID: 0}
+--- !u!223 &1683134690495036166
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3020366305579149214}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &3020366305584861422
 GameObject:
   m_ObjectHideFlags: 0
