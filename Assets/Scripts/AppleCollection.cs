@@ -46,7 +46,7 @@ public class AppleCollection : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             collected = true;
-            Debug.Log("object has been collected");
+            Debug.Log("Apple collected");
         }
         if (collected == true)
         {
