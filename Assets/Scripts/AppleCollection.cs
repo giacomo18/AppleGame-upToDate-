@@ -26,7 +26,7 @@ public class AppleCollection : MonoBehaviour
         if (collected ==true)
         {
             
-            BasketItem.transform.parent = Basket.transform;
+           // BasketItem.transform.parent = Basket.transform;
 
 
         }
