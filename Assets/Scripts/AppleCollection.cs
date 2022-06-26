@@ -23,21 +23,8 @@ public class AppleCollection : MonoBehaviour
     void Update()
     {
 
-        if (collected ==true)
-        {
-            
-           // BasketItem.transform.parent = Basket.transform;
-
-
-        }
-     if (Basket == null)
-        {
-            Destroy(gameObject);
-            collected = false;
-        }   
-    
-     
         
+      
     } 
 
    public void OnTriggerEnter(Collider other)

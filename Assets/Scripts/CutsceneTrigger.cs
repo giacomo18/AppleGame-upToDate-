@@ -9,14 +9,14 @@ public class CutsceneTrigger : MonoBehaviour
 {
     //Variables
     public GameObject MainCamera;
-    public GameObject CutsceneCamera;
-    public float CutsceneTime = 30f;
-    public bool triggered;
+    public GameObject CutsceneCamera;       
     public GameObject Basket;
     public CollectingApples apples;
     public GameObject checkpoint;
     public GameObject input;
-    public bool checkv2;
+    public bool triggered;
+    public bool istriggercheck;
+    public float CutsceneTime = 30f;
     public float timer = 30f;
     public float extraTime = 0f;
     
@@ -24,14 +24,14 @@ public class CutsceneTrigger : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
+    // at the start of the game, the "istrigger" is false 
     void Start()
     {
         Initialize();
         triggered = false;
         gameObject.GetComponent<BoxCollider>().isTrigger = false;
         apples = GameObject.Find("_FPCharacter").GetComponent<CollectingApples>();
-        checkv2 = true;
+        istriggercheck = true;
     }
 
     // Update is called once per frame
@@ -45,11 +45,11 @@ public class CutsceneTrigger : MonoBehaviour
        if (apples.full == true)
        {
             triggered = true;
-            if (checkv2 == true)
+            if (istriggercheck == true)
             {
                 gameObject.GetComponent<BoxCollider>().isTrigger = true;
-                
-                checkv2 = false;
+
+                istriggercheck = false;
 
             }
         }
@@ -93,5 +93,7 @@ public class CutsceneTrigger : MonoBehaviour
     {
         timer = 30f + extraTime;
     }
+
+   
 
 }

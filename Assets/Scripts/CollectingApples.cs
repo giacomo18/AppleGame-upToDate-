@@ -13,7 +13,7 @@ public class CollectingApples : MonoBehaviour
     
     
     private void OnTriggerEnter(Collider other)
-       
+       // This array counts and orders the apples into their position within the basket
     {
         if (other.gameObject.tag == "Apples")
         {
@@ -28,22 +28,12 @@ public class CollectingApples : MonoBehaviour
                 full = true;
                 NeedMore = false;
             }
+            if (counter == 8)
+            {
+                Debug.Log("you collected all the apples, good job!");
+            }
         }            
     }
-    /*
-    public void Update()
-    {
-       
-        if (counter == 4)
-        {
-            full = true;
-            NeedMore = false;
-        }
-
-        if (counter <= 3)
-        {
-            NeedMore = true;                         
-        }
-    }*/
+ 
     
 }
