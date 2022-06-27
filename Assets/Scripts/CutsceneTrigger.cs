@@ -37,7 +37,7 @@ public class CutsceneTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
+       timer -= Time.deltaTime;
         if (timer < 0)
         {
             SceneManager.LoadScene("SampleScene");
@@ -61,7 +61,7 @@ public class CutsceneTrigger : MonoBehaviour
 
         if (triggered == true)
         {
-            //CutsceneTime -= Time.deltaTime;
+           
             if (CutsceneTime > 0)
             {
                 extraTime = timer;
